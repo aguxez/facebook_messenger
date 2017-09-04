@@ -126,23 +126,4 @@ defmodule FacebookMessenger.Builder do
 
     Sender.manager.post(url: Sender.url(), body: payload)
   end
-
-  def testing do
-    body 123, :list_template do
-      fields %{
-        template_type: "list",
-        top_element_style: "compact",
-        elements: [
-          %{
-            title: "Classic shirt",
-            subtitle: "First subtitle"
-          },
-          %{
-            title: "Classic shirt 2",
-            subtitle: "Second subtitle"
-          }
-          ]
-        }
-      end
-  end
 end

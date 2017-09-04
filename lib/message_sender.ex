@@ -12,7 +12,7 @@ defmodule FacebookMessenger.Sender do
   """
   @spec send(String.t, String.t) :: HTTPotion.Response.t
   def send(recepient, message) do
-    res = manager.post(
+    res = manager().post(
       url: url(),
       body: text_payload(recepient, message) |> to_json
     )
@@ -28,7 +28,7 @@ defmodule FacebookMessenger.Sender do
   """
   @spec send_image(String.t, String.t) :: HTTPotion.Response.t
   def send_image(recepient, image_url) do
-    res = manager.post(
+    res = manager().post(
       url: url(),
       body: image_payload(recepient, image_url) |> to_json
     )
@@ -84,8 +84,15 @@ defmodule FacebookMessenger.Sender do
   return the url to hit to send the message
   """
   def url do
-    query = "access_token=#{page_token}"
+    query = "access_token=#{page_token()}"
     "https://graph.facebook.com/v2.6/me/messages?#{query}"
+  end
+
+  @doc """
+  Defines the url to send configuration methods to the Messenger Profile API.
+  """
+  def profile_url do
+    "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=#{page_token()}"
   end
 
   defp page_token do
