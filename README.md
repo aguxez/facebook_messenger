@@ -84,6 +84,8 @@ If you use phoenix framework in your project, then you need the phoenix version 
 
 ### How to use the `body` macro to send other type of messages besides text and image.
 
+The macro receives 3 arguments, `id, :template, "Text"` <- Text is provided only if the template requires it, otherwise it's optional.
+
 This example shows how to send a message with Quick Replies.
 ```elixir
 ...
