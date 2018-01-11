@@ -1,5 +1,3 @@
-require IEx;
-
 defmodule FacebookMessenger.Sender do
   @moduledoc """
   Module responsible for communicating back to facebook messenger
